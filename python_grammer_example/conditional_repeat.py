@@ -18,12 +18,10 @@ i = 1
 #         print("짝수 -> ", i)
 
 
-cars = {'porsche':'911', 'benz':'e class', 'ford':'mustang', 'ferrari':'f8'}
-
+cars = {'porsche': '911', 'benz': 'e class', 'ford': 'mustang', 'ferrari': 'f8'}
 
 for key, value in cars.items():
     print('{} 브랜드의 모델명은 : {}'.format(key, value))
-
 
 # for i in range(2,10):
 #     print("{gugudan}단 ".format(gugudan=i))
@@ -31,7 +29,7 @@ for key, value in cars.items():
 #         print("{} * {} = {}".format(i,j,i*j))
 
 
-#1부터 10000까지 8이 들어있는 수의 8의 갯수의 총합은?
+# 1부터 10000까지 8이 들어있는 수의 8의 갯수의 총합은?
 
 count = 0
 

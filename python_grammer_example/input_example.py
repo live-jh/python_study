@@ -17,7 +17,7 @@ chk_name = 'frankl:ampard'
 
 print(chk_name.split(':'))
 
-#for 루프
+# for 루프
 languages = ['python', 'perl', 'c', 'java']
 
 for lang in languages:
@@ -28,7 +28,7 @@ for lang in languages:
     else:
         print("should not reach here")
 
-numbers = [1,2,3,4,5,6,7,8,9]
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 for no in numbers:
     if no % 2 == 0:
         print(no, "는 짝수")
