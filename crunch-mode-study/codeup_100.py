@@ -140,6 +140,45 @@
 
 
 # 6095 오목판 돌 위치 구하기
-n = int(input())
 # 1. 일단 바둑판 다 0으로 초기화
 # 2. 선택된 애들을 입력받기 [[n, m], [n, m], [n, m], [n, m], [n, m]]
+
+# n = int(input())
+# arr = [[0] * 19 for _ in range(19)]
+#
+# for _ in range(n):
+#     checked_arr = input().split()
+#     arr[int(checked_arr[0])-1][int(checked_arr[1])-1] = 1
+#
+# for i in range(len(arr)):
+#     for j in arr[i]:
+#         print(j, end=" ")
+#     print()
+
+
+# 6096
+arr = [[0] * 19 for _ in range(19)]
+
+for i in range(19):
+    arr[i] = list(map(int, input().split()))
+
+n = int(input())
+
+for i in range(n):
+    x, y = map(int, input().split())
+
+    for j in range(19):
+        if arr[x - 1][j] == 0:
+            arr[x - 1][j] = 1
+        else:
+            arr[x - 1][j] = 0
+
+        if arr[j][y - 1] == 0:
+            arr[j][y - 1] = 1
+        else:
+            arr[j][y - 1] = 0
+
+for i in range(19):
+    for j in range(19):
+        print(arr[i][j], end=" ")
+    print()
