@@ -157,23 +157,25 @@
 
 
 # 6096
-arr = [[0] * 19 for _ in range(19)]
+arr = [[0] * 19 for _ in range(19)]  # 19, 19 바둑판 0으로 초기화
 
 for i in range(19):
-    arr[i] = list(map(int, input().split()))
+    arr[i] = list(map(int, input().split()))  # 입력값으로 변경처리
 
 n = int(input())
 
-for i in range(n):
-    x, y = map(int, input().split())
+for i in range(n):  # n번 반복하면서
+    x, y = map(int, input().split())  # 변경할 좌표 입력 받기
 
     for j in range(19):
-        if arr[x - 1][j] == 0:
+        # arr[x - 1][j] 은 왼쪽에서 오른쪽으로 가는 줄 변경 (row) 1을 0으로 바꾸기 & 10 10 입력시 arr[x - 1][j] 가로 row [9][0~19] 1 연속
+        # arr[j][y - 1] 는 위에서 아래로 내려오는 줄 변경 (field)
+        if arr[x - 1][j] == 0:  # ex) 10 10 입력시 arr[9][0] == 0
             arr[x - 1][j] = 1
         else:
             arr[x - 1][j] = 0
-
-        if arr[j][y - 1] == 0:
+        #
+        if arr[j][y - 1] == 0:  # ex) 10 10 입력시 arr[0][9] == 0
             arr[j][y - 1] = 1
         else:
             arr[j][y - 1] = 0
