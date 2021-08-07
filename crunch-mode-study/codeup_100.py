@@ -143,44 +143,137 @@
 # 1. 일단 바둑판 다 0으로 초기화
 # 2. 선택된 애들을 입력받기 [[n, m], [n, m], [n, m], [n, m], [n, m]]
 
-# n = int(input())
-# arr = [[0] * 19 for _ in range(19)]
-#
-# for _ in range(n):
-#     checked_arr = input().split()
-#     arr[int(checked_arr[0])-1][int(checked_arr[1])-1] = 1
-#
-# for i in range(len(arr)):
-#     for j in arr[i]:
-#         print(j, end=" ")
-#     print()
+n = int(input())
+arr = [[0] * 19 for _ in range(19)]
+
+for _ in range(n):
+    checked_arr = input().split()
+    arr[int(checked_arr[0])-1][int(checked_arr[1])-1] = 1
+
+for i in range(len(arr)):
+    for j in arr[i]:
+        print(j, end=" ")
+    print()
 
 
 # 6096
-arr = [[0] * 19 for _ in range(19)]  # 19, 19 바둑판 0으로 초기화
+# arr = [[0] * 19 for _ in range(19)]  # 19, 19 바둑판 0으로 초기화
+#
+# for i in range(19):
+#     arr[i] = list(map(int, input().split()))  # 입력값으로 변경처리
+#
+# n = int(input())
+#
+# for i in range(n):
+#     x, y = map(int, input().split())
+#
+#     for j in range(19):
+#         if arr[x - 1][j] == 0:
+#             arr[x - 1][j] = 1
+#         else:
+#             arr[x - 1][j] = 0
+#
+#         if arr[j][y - 1] == 0:
+#             arr[j][y - 1] = 1
+#         else:
+#             arr[j][y - 1] = 0
+#
+# for i in range(19):
+#     for j in range(19):
+#         print(arr[i][j], end=" ")
+#     print()
 
-for i in range(19):
-    arr[i] = list(map(int, input().split()))  # 입력값으로 변경처리
 
-n = int(input())
+# 6097
+# width, height = map(int, input().split())  # 20, 10 => 1차원 배열 length가 10
+# n = int(input())
+# arr = [[0] * height for _ in range(width)]
+# # arr = 20, 10
+#
+#
+# while n > 0:
+#     length, d, x, y = map(int, input().split())  # x,y 는 시작점 좌표인데 1부터 시작
+#     if d == 0:
+#         for _ in range(length):
+#             arr[x - 1][y - 1] = 1
+#             y = y + 1
+#     else:
+#         for _ in range(length):
+#             arr[x - 1][y - 1] = 1
+#             x = x + 1
+#     n -= 1
+#
+# for i in range(len(arr)):
+#     for j in range(len(arr[0])):
+#         print(arr[i][j], end=" ")
+#     print()
 
-for i in range(n):  # n번 반복하면서
-    x, y = map(int, input().split())  # 변경할 좌표 입력 받기
+# 여기서 시작점을 가지고 총 length 와 d를 활용해 가로,세로 구분을 통해 최종 목적지 x,y를 구해야함
+# for i in range(len(arr)):
+#     for j in range(len(arr)):
+#         if d == 0:  # 가로 (x+1)
+#             # 1. length만큼 반복해야함
+#             # 2. 반복할때 x+1
+#             if length:
+#                 arr[i + 1][j]
+#
+#         else:  # 세로 (y+1)
+#             pass
 
-    for j in range(19):
-        # arr[x - 1][j] 은 왼쪽에서 오른쪽으로 가는 줄 변경 (row) 1을 0으로 바꾸기 & 10 10 입력시 arr[x - 1][j] 가로 row [9][0~19] 1 연속
-        # arr[j][y - 1] 는 위에서 아래로 내려오는 줄 변경 (field)
-        if arr[x - 1][j] == 0:  # ex) 10 10 입력시 arr[9][0] == 0
-            arr[x - 1][j] = 1
-        else:
-            arr[x - 1][j] = 0
-        #
-        if arr[j][y - 1] == 0:  # ex) 10 10 입력시 arr[0][9] == 0
-            arr[j][y - 1] = 1
-        else:
-            arr[j][y - 1] = 0
 
-for i in range(19):
-    for j in range(19):
-        print(arr[i][j], end=" ")
-    print()
+# 6097 모범답안
+# h,w = input().split()
+# h = int(h)
+# w = int(w)
+#
+# m = []
+# for i in range(h+1) :
+#   m.append([]) //첫번째 빈 배열
+#   for j in range(w+1) :
+#     m[i].append(0)
+#
+# n = int(input())
+# for i in range(n) :
+#   l,d,x,y = input().split()
+#   if int(d)==0 :
+#     for j in range(int(l)) :
+#       m[int(x)][int(y)+j] = 1
+#   else :
+#     for j in range(int(l)) :
+#       m[int(x)+j][int(y)] = 1
+#
+# for i in range(1, h+1) :
+#   for j in range(1, w+1) :
+#     print(m[i][j], end=' ')
+#   print()
+
+
+# 6098
+# arr = [[0] * 10 for _ in range(10)]  # 초기화 후
+# arr.insert(0, [])
+# for i in range(1, 11):
+#     arr[i] = list(map(int, input().split()))  # 입력된 값으로 변경
+#     arr[i].insert(0, [])
+# # print("------------------------------")
+#
+# x, y = 2, 2
+# while True:
+#     if arr[x][y] == 0:  # 0일때 좌표 찍기
+#         arr[x][y] = 9
+#     elif arr[x][y] == 2:  # 끝 부분 변경 후 종료
+#         arr[x][y] = 9
+#         break
+#
+#     if arr[x][y + 1] == 1 and arr[x + 1][y] == 1: #막다른길 오른쪽/아래 둘다 막힐때 역시 종료
+#         break
+#     else:
+#         if arr[x][y + 1] != 1:  # 오른쪽에 1이 아니면 갈수 있으므로 y축 + 1해서 -> 오른쪽 이동
+#             y += 1
+#         elif arr[x + 1][y] != 1: # 위에 조건에서 1 즉 벽으로 막혀있을때 조건 아래로 이동하는데 이동하는 칸의 값이 1이 아닐땐 x를 더해 한칸 더 내려간다
+#             x += 1
+#
+# print("--------------------------------")
+# for i in range(1, 11):
+#     for j in range(1, 11):
+#         print(arr[i][j], end=" ")
+#     print()
