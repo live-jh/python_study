@@ -222,12 +222,19 @@ for i in range(len(arr)):
 
 
 # 6097 모범답안
+
+# coordinate = [[0] * (n + 1) for i in range(n + 1)]  # 1,1부터 시작하는 2차 배열 초기화  [0,1,2,3,4,5] 면 0은 안씀
+# for i in range(1, n + 1):
+#     for j in range(1, n + 1):
+#         pass
+#     print()
+
 # h,w = input().split()
 # h = int(h)
 # w = int(w)
 #
 # m = []
-# for i in range(h+1) :
+# for i in range(h+1) : # 0은 무시하고 쓰기 1~h+1까지
 #   m.append([]) //첫번째 빈 배열
 #   for j in range(w+1) :
 #     m[i].append(0)
