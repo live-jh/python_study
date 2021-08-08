@@ -1,34 +1,42 @@
-#그리디
-# 1이 될때까지 아래의 연산을 반복하되 최소한의 연산 횟수 구하기
-# 입력된 값 n에서 -1
-# n을 k로 나눈다
+"""
+Quiz. 1이 될때까지 - or / 연산을 반복하여 최소한의 연산 횟수 구하기
+Page. 99
+"""
 
-# 내가 푼 방법
-n, k = map(int, input().split())
+import time
+
+# 내 코드
+n, k = map(int, input().split())  # 17, 4
+start_time = time.time()
 count = 0
 while n > 1:
-    if n % 5 != 0:
+    if n % k != 0:
         n -= 1
         count += 1
     else:
         n = n // k
         count += 1
-
 print(count)
+end_time = time.time()
+print(f"소요시간 :", format(end_time - start_time, '.5f'), "sec")
 
+# 책 코드
 
-# 교재 방법
-# n, k = map(int, input().split())  # N, K값 입력
+# n, k = map(int, input().split())  # 17, 4
+# start_time = time.time()
+#
 # count = 0
 # while True:
-#     target = (n // k) * k  # target = 나누어 0으로 떨어지는 수로 만들기 (k의 배수)
-#     count += (n - target)  # 여기서 나머지가 1이면 count + 1 0이면 count 0
-#     n = target  # n을 타겟으로 변경 즉 위에 코드에서 -1 했다고 봐도 무방
-#     if n < k:
+#     target = (n // k) * k  # n이 k로 나누어 떨어지는 숫자 target 지정
+#     count += n - target  # 주어진 숫자 - target = 반복작업 해야하는 count 횟수
+#     n = target
+#     if n < k:  # n이 k보다 작을때
 #         break
-#     n //= k  # target으로 만들어놓고 나누기
-#     count += 1  # count + 1
+#     n //= k  # n = n//k
+#     count += 1
 #
-# count += (n - 1)  # 마지막으로 남은 수 -1씩
-#
+# count += n - 1
 # print(count)
+# end_time = time.time()
+#
+# print(f"소요시간 :", format(end_time - start_time, '.5f'), "sec")
