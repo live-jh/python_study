@@ -114,3 +114,6 @@ import re
 # findall method
 # 패턴을 모두 찾아 리스트로 반환
 # re.findall(패턴, 문자열)
+
+# name = input_set[0]
+    # demo[name] = list(map(int, input_set[1:4]))
