@@ -89,3 +89,28 @@ print('4.5 안된다 ! ', round(9 / 2))  # 우와 신기 4.5 에서 반올림하
 # print(round(5 / 2))  # 우와 신기 2.5에서 반올림 하면 3이 되어야 하는데 안됌
 # print(round(2.5))  # 예상 -> 3? ㄴㄴ 2나옴
 # print(round(3 / 2))  # 우와 신기 1.5에서 반올림해서 2가 됌
+
+
+# 정규표현식
+
+import re
+
+# sub -> 대신하다
+# sub("규칙", 변경할 값, "타겟 문자열")
+# \w => 글자 {%i} => 1개, \g<1> 그룹 1개 + " " , 공백 기준으로 split()
+# reList = re.sub('(\w{%i})' %i,'\g<1> ', s).split()
+
+# match method
+# 문자열에서 패턴 찾기 reList = re.sub('(\w{%i})'%i,'\g<1> ', s).split()(도입부)
+# re.match(패턴, 문자열)
+# re.match(패턴, 문자열).group()
+
+# search method
+
+# 문자열 전체에서 패턴 찾기(문자 중간)
+# re.search(패턴, 문자열)
+# re.search(패턴, 문자열).group()
+
+# findall method
+# 패턴을 모두 찾아 리스트로 반환
+# re.findall(패턴, 문자열)
