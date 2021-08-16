@@ -8,6 +8,8 @@
 # list는 딕셔너리의 key값(해쉬)으로 쓸 수 없지만 tuple은 가능 (딕셔너리의 키값은 불변한 값만 올 수 있기 때문)
 
 # 리스트 초기화
+import math
+
 list1 = [1, 2, 3, 'sdf', ['a', 'b', True]]
 # print("리스트 인덱싱 출력", list1[:4])  # 맨 마지막을 제외하고 앞까지
 
@@ -58,8 +60,32 @@ dic.clear()
 # 순서가 없고 모든 데이터는 unique 특징 (중복 허용 x)
 # 중괄호 사용하는 표현방식은 dict과 비슷하지만 key가 없고 value만 존재
 # 사용시 list로 감싸거나 dict, duple로 변환해서 사용하기
-demo_set = set("hello check") # 중복제거 set()
+demo_set = set("hello check")  # 중복제거 set()
 # ["리턴 데이터" for "리턴 데이터" in obj_set "조건"] 리스트로 반환
 new_list_demo_set = [demo for demo in demo_set if demo != " "]  # 공백 데이터, 중복(set)을 제외한 실제 str만 리스트로 리턴
 new_list_demo_set.sort()  # 정렬
 print(new_list_demo_set)
+
+
+# 파이썬 반올림
+# 소수점 반올림 자리가 .5인경우 앞자리(정수)가 홀수면 올림, 짝수면 내림 파이썬 특징
+# 앞 정수에 상관없이 반올림하고 싶다면 3항 연산자를 사용하여 강제하거나 decimal 모듈 사용
+def changed_round(num):
+    if (float(num) % 1) >= 0.5:
+        data = math.ceil(num)  # 0.5보다 크거나 같으면 무적권 올림 최소 0.5 이상 올림
+    else:
+        data = round(num)
+    return data
+
+
+import decimal
+
+x = decimal.Decimal(9 / 2).quantize(decimal.Decimal('1'),
+                                    rounding=decimal.ROUND_HALF_UP)
+print('4.5 된다 ! ', x)  # 된다
+print('4.5 된다 ! ', changed_round(9 / 2))  # 된다
+print('4.5 안된다 ! ', round(9 / 2))  # 우와 신기 4.5 에서 반올림하면 5가 되어야 하는데 안됌
+# print(round(7 / 2))  # 우와 신기 3.5에서 반올림해서 4가 됌
+# print(round(5 / 2))  # 우와 신기 2.5에서 반올림 하면 3이 되어야 하는데 안됌
+# print(round(2.5))  # 예상 -> 3? ㄴㄴ 2나옴
+# print(round(3 / 2))  # 우와 신기 1.5에서 반올림해서 2가 됌
